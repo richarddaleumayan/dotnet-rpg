@@ -1,9 +1,14 @@
 using dotnet_rpg.Services.CharacterService;
+using dotnet_rpg.Data;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+// TODO: Use appsettings.json value for the default database connection string
+builder.Services.AddDbContext<DataContext>(options =>
+    options.UseSqlServer("Server=DESKTOP-2VEHCL6; Database=dotnet-rpg; Trusted_Connection=true;"));
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
