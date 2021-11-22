@@ -8,13 +8,14 @@ var builder = WebApplication.CreateBuilder(args);
 
 // TODO: Use appsettings.json value for the default database connection string
 builder.Services.AddDbContext<DataContext>(options =>
-    options.UseSqlServer("Server=DESKTOP-2VEHCL6; Database=dotnet-rpg; Trusted_Connection=true;"));
+    options.UseSqlServer("Server=DESKTOP-2VEHCL6; Database=dotnet-rpg2; Trusted_Connection=true;"));
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddScoped<ICharacterService, CharacterService>();
+builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 
 var app = builder.Build();
 
